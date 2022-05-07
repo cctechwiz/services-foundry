@@ -21,6 +21,8 @@ services:
       - url=https://foundry.cosmere.cctechwiz.com
       - CONTAINER_CACHE=/data/cache
       - FOUNDRY_HOSTNAME=foundry.cosmere.cctechwiz.com
+      - FOUNDRY_UID=1000
+      - FOUNDRY_GID=1000
       - FOUNDRY_PROXY_SSL=true
       - FOUNDRY_PROXY_PORT=443
       - FOUNDRY_MINIFY_STATIC_FILES=true
