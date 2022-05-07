@@ -5,7 +5,7 @@ secrets:
     file: $PWD/secrets.json
 
 networks:
-  bridge:
+  backbone:
     external: true
 
 services:
@@ -16,7 +16,7 @@ services:
     init: true
     restart: unless-stopped
     networks:
-      - bridge
+      - backbone
     environment:
       - url=https://foundry.cosmere.cctechwiz.com
       - CONTAINER_CACHE=/data/cache
