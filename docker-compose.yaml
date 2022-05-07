@@ -1,0 +1,34 @@
+version: "3"
+
+secrets:
+  config_json:
+    file: $PWD/secrets.json
+
+networks:
+  bridge:
+    external: true
+
+services:
+  foundry:
+    image: felddy/foundryvtt:release
+    container_name: foundry
+    hostname: foundry
+    init: true
+    restart: unless-stopped
+    networks:
+      - bridge
+    environment:
+      - url=https://foundry.cosmere.cctechwiz.com
+      - CONTAINER_CACHE=/data/cache
+      - FOUNDRY_HOSTNAME=foundry.cosmere.cctechwiz.com
+      - FOUNDRY_PROXY_SSL=true
+      - FOUNDRY_PROXY_PORT=443
+      - FOUNDRY_MINIFY_STATIC_FILES=true
+      - TIMEZONE=America/Denver
+    volumes:
+      - $PWD/data:/data
+    ports:
+      - "30000:30000"
+    secrets:
+      - source: config_json
+        target: config.json
